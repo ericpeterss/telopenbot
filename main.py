@@ -33,8 +33,8 @@ def generate_response(prompt):
     }
 
     data = {
-    #"model": "gpt-4",    
-    "model": "gpt-3.5-turbo",
+    "model": "gpt-4",    
+    #"model": "gpt-3.5-turbo",
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": prompt}
