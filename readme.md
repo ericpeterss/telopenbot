@@ -11,36 +11,36 @@ This is a simple Telegram bot that uses the OpenAI GPT engine to generate conver
 
 1. Clone this repository:
 
-'''sh
+```sh
 git clone https://github.com/ericpeterss/telopenbot.git
 cd telopenbot
-'''
+```
 
 2. Install the required Python packages:
 
-'''sh
+```sh
 pip install -r requirements.txt
-'''
+```
 
 3. Set up your OpenAI API key as an environment variable:
 
-'''sh
+```sh
 export OPENAI_API_KEY=your_openai_api_key
-'''
+```
 
 4. Set up your Telegram bot token as an environment variable:
 
-'''sh
+```sh
 export TELEGRAM_TOKEN=your_telegram_bot_token
-'''
+```
 
 ## Usage
 
 To run the bot, simply execute the following command:
 
-'''sh
+```sh
 python main.py
-'''
+```
 
 The bot should now be running and able to respond to messages sent via Telegram.
 
