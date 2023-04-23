@@ -14,6 +14,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 def send_message(chat_id, text):
     url = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage'
     data = {'chat_id': chat_id, 'text': text}
+    print(data)
     requests.post(url, data=data)
 
 # Define a function to call the OpenAI API and generate a response
@@ -32,8 +33,8 @@ def generate_response(prompt):
     }
 
     data = {
-    "model": "gpt-4",    
-    #"model": "gpt-3.5-turbo",
+    #"model": "gpt-4",    
+    "model": "gpt-3.5-turbo",
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": prompt}
@@ -56,18 +57,15 @@ def generate_response(prompt):
 # Create a function to handle updates from the Telegram API:
 def handle_updates(updates):
     for update in updates:
-        message = update['message']
-
-        # Check if the 'text' key exists in the message dictionary
-        if 'text' not in message:
-            continue
-
-        text = message['text']
-        chat_id = message['chat']['id']
-
-        if text:
-            response = generate_response(text)
-            send_message(response, chat_id)
+        if 'message' in update:
+            message = update['message']
+            if 'text' in message:
+                text = message['text']
+                chat_id = message['chat']['id']
+            
+                response = generate_response(text)
+                send_message(chat_id, response)
+        
 
 # Create a function to fetch new updates from the Telegram API
 def fetch_updates(offset=None):
